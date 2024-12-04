@@ -1,4 +1,4 @@
-package data
+package com.yoel.roommapviewmodel.data
 
 import android.content.Context
 import androidx.room.Database
