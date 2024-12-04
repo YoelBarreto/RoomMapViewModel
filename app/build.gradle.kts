@@ -43,6 +43,7 @@ android {
 dependencies {
     // Mapa osmdroid
     implementation(libs.osmdroid.android)
+    implementation(libs.osm.android.compose)
 
     // Room
     implementation(libs.androidx.room.ktx)
