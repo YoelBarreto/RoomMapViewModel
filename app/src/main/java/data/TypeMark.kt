@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class TypeMark(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    val titulo: String
+    val name: String
 )
