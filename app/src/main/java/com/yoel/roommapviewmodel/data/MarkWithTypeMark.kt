@@ -9,5 +9,5 @@ data class MarkWithTypeMark(
         parentColumn = "typeMarkId",
         entityColumn = "id"
     )
-    val typeTask: TypeMark
+    val typeTask: List<TypeMark>
 )
