@@ -20,7 +20,7 @@ import androidx.room.Relation
 data class Mark( @PrimaryKey(autoGenerate = true)
                  val id: Int = 0,
                  val name: String,
-                 val y: Double,
                  val x: Double,
+                 val y: Double,
                  val typeMarkId: Int // Relación con la tabla type_marks
 )
