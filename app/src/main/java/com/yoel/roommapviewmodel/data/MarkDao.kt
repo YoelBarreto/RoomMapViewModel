@@ -9,5 +9,5 @@ interface MarkDao {
     suspend fun insertMark(task: Mark)
 
     @Query("SELECT * FROM marks")
-    suspend fun getAllMarksAndTypes(): Flow<List<MarkWithTypeMark>>
+    fun getAllMarksAndTypes(): Flow<List<MarkWithTypeMark>>
 }
