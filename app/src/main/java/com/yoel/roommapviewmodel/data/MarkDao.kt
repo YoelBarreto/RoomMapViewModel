@@ -9,11 +9,4 @@ interface MarkDao {
 
     @Query("SELECT * FROM marks")
     suspend fun getAllMarks(): List<Mark>
-
-    @Update
-    suspend fun update(task: Mark)
-
-    @Delete
-    suspend fun delete(task: Mark)
-
 }
