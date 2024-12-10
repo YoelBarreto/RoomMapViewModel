@@ -1,6 +1,7 @@
 package com.yoel.roommapviewmodel.data
 
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MarkDao {
@@ -8,5 +9,5 @@ interface MarkDao {
     suspend fun insertMark(task: Mark)
 
     @Query("SELECT * FROM marks")
-    suspend fun getAllMarks(): List<Mark>
+    suspend fun getAllMarksAndTypes(): Flow<List<MarkWithTypeMark>>
 }
