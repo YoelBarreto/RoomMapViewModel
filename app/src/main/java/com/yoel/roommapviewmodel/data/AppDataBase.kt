@@ -4,10 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 @Database(entities = [Mark::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun markDao(): MarkDao
+    abstract fun typeMarkDao(): TypeMarkDao
 
     companion object {
         @Volatile
@@ -20,8 +23,15 @@ abstract class AppDatabase : RoomDatabase() {
                     "map_database"
                 ).build()
                 INSTANCE = instance
+
+                GlobalScope.launch {
+                    firstData(instance.typeMarkDao(), instance.markDao())
+                }
                 instance
             }
+        }
+        private suspend fun firstData(typeMarkDao: TypeMarkDao, markDao: MarkDao) {
+
         }
     }
 }
