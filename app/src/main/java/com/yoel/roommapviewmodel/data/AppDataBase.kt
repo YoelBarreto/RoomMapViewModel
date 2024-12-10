@@ -25,9 +25,9 @@ abstract class AppDatabase : RoomDatabase() {
                 ).build()
                 INSTANCE = instance
 
-//                GlobalScope.launch {
-//                    firstData(instance.typeMarkDao(), instance.markDao())
-//                }
+                GlobalScope.launch {
+                    firstData(instance.typeMarkDao(), instance.markDao())
+                }
                 instance
             }
         }
