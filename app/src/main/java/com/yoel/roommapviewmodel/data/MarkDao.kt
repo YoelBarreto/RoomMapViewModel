@@ -5,7 +5,7 @@ import androidx.room.*
 @Dao
 interface MarkDao {
     @Insert
-    suspend fun insert(task: Mark)
+    suspend fun insertMark(task: Mark)
 
     @Query("SELECT * FROM marks")
     suspend fun getAllMarks(): List<Mark>
