@@ -50,6 +50,7 @@ abstract class AppDatabase : RoomDatabase() {
             val typesInsertedUpd = typeMarkDao.getAllTypeMarks().first()
 
             val marks = listOf(
+                // -------Comercio
                 // 1 28.956845569943642, -13.586779205792755
                 Mark(name = "Centro Comercial Deiland", x = 28.956845569943642, y = -13.586779205792755, typeMarkId = typesInsertedUpd[0].id),
                 // 2 28.95806336981142, -13.585313992621943
@@ -60,16 +61,23 @@ abstract class AppDatabase : RoomDatabase() {
                 Mark(name = "Mercadona Playa Honda", x = 28.95951322590405, y = -13.592477431479727, typeMarkId = typesInsertedUpd[0].id),
                 // 5 28.957169170585573, -13.599439057067102
                 Mark(name = "Hiperdino San Bartolome", x = 28.957169170585573, y = -13.599439057067102, typeMarkId = typesInsertedUpd[0].id),
+                // -------Cultural
                 // 6 28.954667969496054, -13.585789576718417
                 Mark(name = "Parque infantíl Los Roques", x = 28.954667969496054, y = -13.585789576718417, typeMarkId = typesInsertedUpd[1].id),
                 // 7 29.141827384708, -13.503701097981299
                 Mark(name = "Casa/Museo Cesar Manrique", x = 29.141827384708, y = -13.503701097981299, typeMarkId = typesInsertedUpd[1].id),
                 // 8 29.18467900560408, -13.50116937418045
                 Mark(name = "Mirador de Guinate", x = 29.18467900560408, y = -13.50116937418045, typeMarkId = typesInsertedUpd[1].id),
-                Mark(name = "Casa/Museo Cesar Manrique", x = 29.141827384708, y = -13.503701097981299, typeMarkId = typesInsertedUpd[1].id),
-                Mark(name = "Casa/Museo Cesar Manrique", x = 29.141827384708, y = -13.503701097981299, typeMarkId = typesInsertedUpd[1].id),
-                Mark(name = "Casa/Museo Cesar Manrique", x = 29.141827384708, y = -13.503701097981299, typeMarkId = typesInsertedUpd[1].id),
-                Mark(name = "Casa/Museo Cesar Manrique", x = 29.141827384708, y = -13.503701097981299, typeMarkId = typesInsertedUpd[1].id),
+                // -------Hospedaje
+                // 9 28.933295803627374, -13.617606918240945
+                Mark(name = "Hotel Beatriz", x = 28.933295803627374, y = -13.617606918240945, typeMarkId = typesInsertedUpd[2].id),
+                // 10 28.957249430684957, -13.554364903583792
+                Mark(name = "Arrecife Gran Hotel", x = 28.957249430684957, y = -13.554364903583792, typeMarkId = typesInsertedUpd[2].id),
+                // -------Playas
+                // 11 28.957648137171667, -13.560246906266194
+                Mark(name = "Playa del Reducto", x = 28.957648137171667, y = -13.560246906266194, typeMarkId = typesInsertedUpd[3].id),
+                // 12 28.95366434029967, -13.582300270827474
+                Mark(name = "Playa de la concha", x = 28.95366434029967, y = -13.582300270827474, typeMarkId = typesInsertedUpd[3].id),
             )
 
         }
