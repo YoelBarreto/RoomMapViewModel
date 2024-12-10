@@ -80,6 +80,15 @@ abstract class AppDatabase : RoomDatabase() {
                 Mark(name = "Playa de la concha", x = 28.95366434029967, y = -13.582300270827474, typeMarkId = typesInsertedUpd[3].id),
             )
 
+            val marksInserted = markDao.getAllMarksAndTypes().first()
+
+            if (marksInserted.isEmpty()) {
+                marks.forEach {
+                    markDao.insertMark(it)
+                }
+            }
+
+
         }
     }
 }
