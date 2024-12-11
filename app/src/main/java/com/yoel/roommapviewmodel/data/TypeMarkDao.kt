@@ -10,7 +10,4 @@ interface TypeMarkDao {
 
     @Query("SELECT * FROM type_marks")
     fun getAllTypeMarks(): Flow<List<TypeMark>>
-
-    @Query("SELECT name FROM type_marks WHERE id = :id")
-    suspend fun getTitleById(id: Int): String?
 }
