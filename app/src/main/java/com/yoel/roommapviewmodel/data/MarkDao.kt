@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface MarkDao {
     @Insert
-    suspend fun insertMark(task: Mark)
+    suspend fun insertMark(mark: Mark)
 
     @Query("SELECT * FROM marks")
     fun getAllMarksAndTypes(): Flow<List<MarkWithTypeMark>>
