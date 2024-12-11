@@ -6,6 +6,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -22,10 +23,10 @@ import com.utsman.osmandcompose.OpenStreetMap
 import com.utsman.osmandcompose.ZoomButtonVisibility
 import com.utsman.osmandcompose.rememberCameraState
 import com.utsman.osmandcompose.rememberMarkerState
-import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.tileprovider.tilesource.XYTileSource
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.util.MapTileIndex
+import viewmodel.MarKViewModel
 
 val GoogleSat = object : XYTileSource(
     "Google-Sat",
@@ -43,16 +44,15 @@ val GoogleSat = object : XYTileSource(
 }
 
 @Composable
-fun ScreenMap(modifier: Modifier = Modifier) {
+fun ScreenMap(modifier: Modifier = Modifier, viewmodel : MarKViewModel) {
 
+    val marksWithTypes by viewmodel.marksWithTypes.collectAsState(initial = emptyList())
+
+    // Posición inicial
     val cameraState = rememberCameraState {
         geoPoint = GeoPoint(28.95739300474134, -13.554483241074891)
         zoom = 17.0 // optional, default is 5.0
     }
-    val depokMarkerState = rememberMarkerState(
-        geoPoint = GeoPoint(28.95739300474134, -13.554483241074891)
-    )
-
     // define properties with remember with default value
     var mapProperties by remember {
         mutableStateOf(DefaultMapProperties)
@@ -70,6 +70,16 @@ fun ScreenMap(modifier: Modifier = Modifier) {
         cameraState = cameraState,
         properties = mapProperties // add properties
     ) {
+
+        marksWithTypes.forEach { markWithType ->
+            val mark = markWithType.task
+            val typeMark = markWithType.typeTask[0]
+
+            val markerState = rememberMarkerState(
+                geoPoint = GeoPoint(markWithType.task.x, markWithType.task.y)
+            )
+
+
         Marker(
             state = depokMarkerState, // add marker state
             title = "Gran Hotel",
