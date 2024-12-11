@@ -79,26 +79,29 @@ fun ScreenMap(modifier: Modifier = Modifier, viewmodel : MarKViewModel) {
                 geoPoint = GeoPoint(markWithType.task.x, markWithType.task.y)
             )
 
-
-        Marker(
-            state = depokMarkerState, // add marker state
-            title = "Gran Hotel",
-            snippet = "Hotel de 5 estrellas"
-        ) {
-            Column(
-                modifier = Modifier
-                    .size(100.dp)
-                    .background(color = Color.Black, shape = RoundedCornerShape(7.dp)),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
+            Marker(
+                state = markerState, // add marker state
+                title = mark.name,
+                snippet = typeMark.name
             ) {
-                // setup content of info window
-                Column(modifier = Modifier.padding(8.dp)) {
-                    Text(text = it.title, fontWeight = FontWeight.Bold, color = Color.White)
-                    Text(text = it.snippet, fontSize = 10.sp, fontWeight = FontWeight.Bold, color = Color.White)
+                Column(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .background(color = Color.Black, shape = RoundedCornerShape(7.dp)),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Column(modifier = Modifier.padding(8.dp)) {
+                        Text(text = it.title, fontWeight = FontWeight.Bold, color = Color.White)
+                        Text(
+                            text = it.snippet,
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White
+                        )
+                    }
                 }
             }
         }
     }
-
 }
