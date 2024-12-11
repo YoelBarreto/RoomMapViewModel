@@ -14,15 +14,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
 import com.utsman.osmandcompose.DefaultMapProperties
 import com.utsman.osmandcompose.Marker
 import com.utsman.osmandcompose.OpenStreetMap
 import com.utsman.osmandcompose.ZoomButtonVisibility
 import com.utsman.osmandcompose.rememberCameraState
 import com.utsman.osmandcompose.rememberMarkerState
+import com.yoel.roommapviewmodel.R
 import org.osmdroid.tileprovider.tilesource.XYTileSource
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.util.MapTileIndex
@@ -74,16 +77,16 @@ fun ScreenMap(modifier: Modifier = Modifier, viewmodel : MarKViewModel) {
         marksWithTypes.forEach { markWithType ->
             val mark = markWithType.task
             val typeMark = markWithType.typeTask[0]
-            var icono by remember { mutableStateOf(R.drawable.icon_comercio) }
+            var icon by remember { mutableStateOf(R.drawable.icon_comercio) }
 
-            if (typeMark.id == 1) {
-                icono = R.drawable.icon_deporte
+            if (typeMark.id == 0) {
+                icon = R.drawable.icon_comercio
+            } else if (typeMark.id == 1) {
+                icon = R.drawable.icon_cultural
             } else if (typeMark.id == 2) {
-                icono = R.drawable.icon_educacion
+                icon = R.drawable.icon_hospedaje
             } else if (typeMark.id == 3) {
-                icono = R.drawable.icon_viaje
-            } else if (typeMark.id == 4) {
-                icono = R.drawable.icon_cultura
+                icon = R.drawable.icon_playa
             }
 
             val markerState = rememberMarkerState(
@@ -93,7 +96,8 @@ fun ScreenMap(modifier: Modifier = Modifier, viewmodel : MarKViewModel) {
             Marker(
                 state = markerState, // add marker state
                 title = mark.name,
-                snippet = typeMark.name
+                snippet = typeMark.name,
+                icon = ContextCompat.getDrawable(LocalContext.current, icon)
             ) {
                 Column(
                     modifier = Modifier
