@@ -11,7 +11,11 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.yoel.roommapviewmodel.data.MarkDao
 import com.yoel.roommapviewmodel.ui.ScreenMap
+import viewmodel.MarKViewModel
+import viewmodel.ViewModelFactory
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,8 +23,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                val viewModel: MarKViewModel = viewModel(factory = ViewModelFactory(MarkDao))
                 ScreenMap(
-                    modifier = Modifier.padding(innerPadding)
+                    modifier = Modifier.padding(innerPadding),
+                    viewmodel = viewModel
                 )
             }
         }
