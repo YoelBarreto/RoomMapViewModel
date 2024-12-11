@@ -9,3 +9,15 @@ Proyecto escolar en el cual en la aplicación se trata de un mapa con la capacid
 - 12 marcadores mínimo (mostrarán al menos un título)
 - 4 tipos de marcadores mínimo
 
+## Dependencias
+
+### Room
+implementation(libs.androidx.room.ktx)
+implementation(libs.androidx.room.runtime)
+ksp(libs.androidx.room.compiler)
+
+### osmdroid (Mapa interactivo)
+( Link del repositorio del mapa: https://github.com/osmdroid/osmdroid )
+
+implementation(libs.osmdroid.android)
+implementation(libs.osm.android.compose)
