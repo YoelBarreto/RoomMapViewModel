@@ -7,6 +7,6 @@ import kotlinx.coroutines.flow.Flow
 
 class MarKViewModel(private val markDao: MarkDao) : ViewModel() {
 
-    val marcadoresWithTipo: Flow<List<MarkWithTypeMark>> =
+    val marksWithTypes: Flow<List<MarkWithTypeMark>> =
         markDao.getAllMarksAndTypes()
 }
