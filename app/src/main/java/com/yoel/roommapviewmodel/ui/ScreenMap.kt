@@ -74,6 +74,17 @@ fun ScreenMap(modifier: Modifier = Modifier, viewmodel : MarKViewModel) {
         marksWithTypes.forEach { markWithType ->
             val mark = markWithType.task
             val typeMark = markWithType.typeTask[0]
+            var icono by remember { mutableStateOf(R.drawable.icon_comercio) }
+
+            if (typeMark.id == 1) {
+                icono = R.drawable.icon_deporte
+            } else if (typeMark.id == 2) {
+                icono = R.drawable.icon_educacion
+            } else if (typeMark.id == 3) {
+                icono = R.drawable.icon_viaje
+            } else if (typeMark.id == 4) {
+                icono = R.drawable.icon_cultura
+            }
 
             val markerState = rememberMarkerState(
                 geoPoint = GeoPoint(markWithType.task.x, markWithType.task.y)
