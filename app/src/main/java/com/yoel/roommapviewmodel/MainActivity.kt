@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.yoel.roommapviewmodel.data.AppDatabase
 import com.yoel.roommapviewmodel.data.MarkDao
 import com.yoel.roommapviewmodel.ui.ScreenMap
 import viewmodel.MarKViewModel
@@ -21,9 +22,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        // Uso del markDao desde AppDataBase
+        val database = AppDatabase.getDatabase(this)
+        val markDao = database.markDao()
         setContent {
             Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                val viewModel: MarKViewModel = viewModel(factory = ViewModelFactory(MarkDao))
+                // Usa el DAO para crear el ViewModel
+                val viewModel: MarKViewModel = viewModel(factory = ViewModelFactory(markDao))
                 ScreenMap(
                     modifier = Modifier.padding(innerPadding),
                     viewmodel = viewModel
