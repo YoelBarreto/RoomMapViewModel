@@ -87,8 +87,6 @@ abstract class AppDatabase : RoomDatabase() {
                     markDao.insertMark(it)
                 }
             }
-
-
         }
     }
 }
